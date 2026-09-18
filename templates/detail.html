@@ -1,0 +1,48 @@
+{% extends 'Base.html' %}
+{% block title %}
+	{{ news.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="detail">
+	    <div class="mainbox">
+        <div class="detailcategory">
+            {{ news.category }}
+        </div>
+        <div class="detailtitle">
+        {{ news.title }}
+        </div>
+        <div class="detaildescription">
+        {{ news.summary }}
+        </div>
+            <div class="detailsource">
+                {{ news.source }}
+            </div>
+        <div class="detailpublished">
+        {{ news.published }}
+        </div>
+        <div class="detaillink">
+        <a class="detaillink2" href="{{ news.link }}" target="_blank">مشاهده خبر در منبع اصلی</a>
+        </div>
+        </div>
+    <div class="intro">
+    <p class="">اخبار مرتبط</p>
+        
+    </div>
+    <div class="relatednews">
+
+    {% for relatedNew in relatedNews %}
+        {% if relatedNew != news %}
+        <a style="text-decoration: none" href="{% url 'detail' relatedNew.pk %}">
+        <div class="detailrelatednews">
+    	
+    		{{ relatedNew.title }}
+    	
+        </div>
+        </a>
+        {% endif %} 
+    {% endfor %}
+    </div>
+
+    </div>
+{% endblock %}

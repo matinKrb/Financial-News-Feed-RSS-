@@ -1,0 +1,70 @@
+{% extends 'Base.html' %}
+{% block title %}
+	خبر خوان مالی
+{% endblock %}
+
+{% block content %}
+    <div class="home">
+
+    {% if selectedCategory %}
+    	<p class="newsIntroduction">
+        اخبار مربوط به حوزه {{ selectedCategory.name }}
+        </p>
+
+    {% else %}
+        <p class="newsIntroduction">آخرین اخبار</p>
+
+    {% endif %}
+    <div class="newsparent">
+	  {% for item in news %}
+
+            <a class="anynews" href="{% url 'detail' item.pk %}">
+            <div class="news">
+                <div class="newscategory">
+          {{ item.category.name }}
+        </div>
+
+
+          <div class="newstitle">
+              {{ item.title }}
+          </div>
+
+          <p class="newsdescription">{{ item.summary }}</p>
+
+          <div class="newsdetails">
+          <div class="newssoursename">
+              {{ item.source.name }}
+          </div>
+          <div class="newspublished">
+              {{ item.published }}
+          </div>
+
+
+          </div>
+            </div>
+            </a>
+      {% endfor %}
+    </div>
+    <div class="pagination">
+        {% if news.has_previous %}
+            <a href="?page=1{% if selectedCategory %}?category={{ selectedCategory.slug }}{% endif %}">« اولین</a>
+            <a href="?page={{ news.previous_page_number }}{% if selectedCategory %}?category={{ selectedCategory.slug }}{% endif %}">قبلی</a>
+        {% endif %}
+
+        {% for p in page_range %}
+            {% if p == news.paginator.ELLIPSIS %}
+                <span class="page-ellipsis">{{ p }}</span>
+            {% elif p == news.number %}
+                <span class="page-number current">{{ p }}</span>
+            {% else %}
+                <a class="page-number" href="?page={{ p }}{% if selectedCategory %}?category={{ selectedCategory.slug }}{% endif %}">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if news.has_next %}
+            <a href="?page={{ news.next_page_number }}{% if selectedCategory %}?category={{ selectedCategory.slug }}{% endif %}">بعدی</a>
+            <a href="?page={{ news.paginator.num_pages }}{% if selectedCategory %}?category={{ selectedCategory.slug }}{% endif %}">آخرین »</a>
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa"  dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<header>
+    <div>
+    <h1>
+
+        <a class="title" href="{% url 'index' %}">خبرخوان مالی 📈</a>
+    </h1>
+    </div>
+    <div class="navbar">
+        <div >
+        <a class="akhbar" href="{% url 'index' %}">همه اخبار</a>
+        </div>
+        <br>
+        {% for cat in category %}
+            <div >
+            <a class="categories" href="{% url 'index' %}?category={{ cat.slug }}">{{ cat.name }} </a>
+            </div>
+        <br>
+        {% endfor %}
+    </div>
+
+</header>
+
+    {% block content %}{% endblock %}
+
+    <footer >
+        <div class="karamozi">
+        سیستم خبر خوان مالی - پروژه کارآموزی
+        </div>
+        <div class="update">
+            اخبار این سیستم هر 2 ساعت یکبار از منابع rss آپدیت میشوند.
+        </div>
+    </footer>
+</body>
+</html>
