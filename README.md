@@ -95,12 +95,12 @@ The **Financial News Aggregator** is a web-based system built with **Django**, *
 
 <p align="center">
   <b>Main Dashboard View:</b><br>
-  <img src="assets/Screenshot 2026-11-11 160520.png" alt="Main Dashboard" width="100%">
+  <img src="assets/main.png" alt="Main Dashboard" width="100%">
 </p>
 
 <p align="center">
   <b>News Detail View:</b><br>
-  <img src="assets/Screenshot 2026-11-11 160649.png" alt="News Detail" width="100%">
+  <img src="assets/detail.png" alt="News Detail" width="100%">
 </p>
 
 ### 🌟 Key Features
