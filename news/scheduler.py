@@ -51,9 +51,9 @@ def start():
     scheduler.add_job(
         update_rss_feeds,
         'interval',
-        # hours=2,
+        hours=2,
         # minutes=30,
-        seconds=5,
+        # seconds=5,
         id='update_rss_feeds_job',
         replace_existing=True,
     )
